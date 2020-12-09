@@ -13,6 +13,8 @@ public class Lesson3 {
         Random random = new Random();
         int a;
         int b;
+        int attemptsNum = 0;
+        final int maxAttempts = 3;
         b = random.nextInt(10);
         System.out.println("Введите число от 0 до 9");
         do {
@@ -22,13 +24,33 @@ public class Lesson3 {
             System.out.println("Дурень, введи от 0 до 9");
             }
             else if (a < b){
-            System.out.println("загаданное чилсло больеше");
+            System.out.println("Загаданное число больше!");
             }
             else if (a > b){
-            System.out.println("загаданное число меньше");
+            System.out.println("Загаданное число меньше");
             }
         }
-        while (a != b);
+        while (a != b && ++attemptsNum < maxAttempts);
+
+        if (attemptsNum == maxAttempts) {
+            System.out.println("Бро, ты ошибся! число было:" + b);
+        }
+        else {
+            System.out.println("Васся, красаучег! Ты выиграл! Загаданное число было " + b);
+        }
+        askIfYouWantToPlayMore();
+    }
+
+    static public void askIfYouWantToPlayMore() {
+        System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
+        Scanner scanner = new Scanner(System.in);
+        int x = scanner.nextInt();
+        if (x == 0) {
+            System.out.println("Очень жаль, что ты нас покидаешь, бро");
+        }
+        else if (x == 1) {
+            guessTheNumber();
+        }
     }
 }
 
