@@ -57,45 +57,39 @@ public class TicTacToe {
     }
 
     public static boolean checkWin(char symbol) {
-        if (map[0][0] == symbol && map[0][1] == symbol && map[0][2] == symbol) return true;
-        if (map[1][0] == symbol && map[1][1] == symbol && map[1][2] == symbol) return true;
-        if (map[2][0] == symbol && map[2][1] == symbol && map[2][2] == symbol) return true;
-
-        if (map[0][0] == symbol && map[1][0] == symbol && map[2][0] == symbol) return true;
-        if (map[0][1] == symbol && map[1][1] == symbol && map[2][1] == symbol) return true;
-        if (map[0][2] == symbol && map[1][2] == symbol && map[2][2] == symbol) return true;
-
-        if (map[0][0] == symbol && map[1][1] == symbol && map[2][2] == symbol) return true;
-        return map[0][2] == symbol && map[1][1] == symbol && map[2][0] == symbol;
+        if(checkLine(symbol)) return true;
+        return checkDiagonal(symbol);
     }
 
-//    public static boolean checkWin2(char symbol) {
-//        boolean toright, toleft;
-//        toright = true;
-//        toleft = true;
-//            for (int i=0; i<map.length; i++) {
-//                    toright &= (map[i][i] == symbol);
-//                    toleft &= (map[map.length - i - 1][i] == symbol);
-//                    if (toright || toleft) return true;
-//                }
-//            return false;
-//    }
+    private static boolean checkLine(char symbol) {
+        for (int row = 0; row < map.length; row++) {
+            int rowCount = 0;
+            int colCount = 0;
+            for (int col = 0; col < map.length; col++) {
+                rowCount = (map[row][col] == symbol) ? rowCount + 1 : 0;
+                colCount = (map[col][row] == symbol) ? colCount + 1 : 0;
+                if (rowCount == SIZE || colCount == SIZE) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-//    public static boolean checkWin3(char symbol) {
-//        for (char[] row : map) {
-//            for (char col : row) {
-//                if (map[col][col] == symbol){
-//                    return true;
-//                }
-//            }
-//
-//        }
-//        return false;
-//    }
+    private static boolean checkDiagonal(char symbol) {
+            int rightDiag = 0;
+            int leftDiag= 0;
+            for (int i = 0; i < map.length; i++) {
+                rightDiag = (map[i][i] == symbol) ? rightDiag + 1 : 0;
+                leftDiag = (map[i][map.length - 1 - i] == symbol) ? leftDiag + 1 : 0;
+                if (rightDiag == SIZE || leftDiag == SIZE) {
+                    return true;
+                }
+            }
+        return false;
+    }
 
-
-
-        private static void humanTurn() {
+    private static void humanTurn() {
         int rowIndex = -1;
         int colIndex = -1;
         do {
