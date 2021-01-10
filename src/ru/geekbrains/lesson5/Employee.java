@@ -2,23 +2,23 @@ package ru.geekbrains.lesson5;
 
 public class Employee {
 
-    public static String fullName;
-    public static String position;
-    public static String email;
-    public static String phoneNumber;
-    public static int salary;
-    public static int age;
+    public String fullName;
+    public String position;
+    public String email;
+    public String phoneNumber;
+    public int salary;
+    public int age;
 
     public Employee (String fullName, String position, String email, String phoneNumber, int salary, int age) {
-        Employee.fullName = fullName;
-        Employee.position = position;
-        Employee.email = email;
-        Employee.phoneNumber = phoneNumber;
-        Employee.salary = salary;
-        Employee.age = age;
+        this.fullName = fullName;
+        this.position = position;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.salary = salary;
+        this.age = age;
     }
 
-    public static void printEmployeeInfo() {
+    public void printEmployeeInfo() {
         System.out.println("ФИО: " + fullName + "; должность: " + position + "; email: " + email + "; номер телефона: " + phoneNumber + "; зарплата: " + salary + "; возраст: " + age);
     }
 
@@ -31,10 +31,9 @@ public class Employee {
         employeesArray[3] = new Employee("Шульга Ольга", "Клинин менеджер", "olga-sh.com", "+7 (852) 567-33-11", 15000, 33);
         employeesArray[4] = new Employee("Криворучкин Константин", "ЗавХоз", "masternavseryki@list.com", "+7 (444) 555-66-77", 25000, 44);
 
-        for (int i = 0; i < employeesArray.length; i++) {
-            if (age > 40) {
-                printEmployeeInfo();
-
+        for (Employee employee : employeesArray) {
+            if (employee.age > 40) {
+                employee.printEmployeeInfo();
             }
         }
     }
