@@ -34,6 +34,7 @@ public class Employee {
         for (int i = 0; i < employeesArray.length; i++) {
             if (age > 40) {
                 printEmployeeInfo();
+
             }
         }
     }
