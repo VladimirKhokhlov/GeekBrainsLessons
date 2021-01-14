@@ -7,7 +7,7 @@ public class Cat extends Animal {
     }
 
     @Override
-    public int run(int i) {
+    public void run(int i) {
         if (i > 200) {
             System.out.println(name + " не может пробежать дальше 200м!");
         }
@@ -15,17 +15,15 @@ public class Cat extends Animal {
             System.out.println("Не корректный ввод данных. Введите число больше 0");
         }
         else System.out.println(name + " пробежал " + i +"м");
-            return i;
     }
 
     @Override
-    public int swim(int i) {
+    public void swim(int i) {
         System.out.println(name + " не умеет плавать!!!");
-        return i;
     }
 
     @Override
-    public double jump(double i) {
+    public void jump(double i) {
         if (i > 2){
             System.out.println(name + " не может прыгнуть выше 2м!");
         }
@@ -35,6 +33,5 @@ public class Cat extends Animal {
         else {
             System.out.println(name + " прыгнул на " + i + "м");
         }
-            return i;
     }
 }

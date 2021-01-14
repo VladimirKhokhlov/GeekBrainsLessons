@@ -6,7 +6,7 @@ public class Dog extends Animal {
     }
 
     @Override
-    public int run(int i) {
+    public void run(int i) {
         if (i > 500) {
             System.out.println(name + " не может пробежать дальше 500м!");
         }
@@ -14,11 +14,10 @@ public class Dog extends Animal {
             System.out.println("Не корректный ввод данных. Введите число больше 0");
         }
         else System.out.println(name + " пробежал " + i +"м");
-            return i;
     }
 
     @Override
-    public int swim(int i) {
+    public void swim(int i) {
         if (i > 10){
         System.out.println(name + " проплыл " + i + "м");
         }
@@ -26,11 +25,10 @@ public class Dog extends Animal {
             System.out.println("Не корректный ввод данных. Введите число больше 0");
         }
         else System.out.println(name + " проплыл " + i +"м");
-            return i;
     }
 
     @Override
-    public double jump(double i) {
+    public void jump(double i) {
         if (i > 0.5) {
             System.out.println(name + " не может прыгнуть выше 0.5м!");
         }
@@ -38,6 +36,5 @@ public class Dog extends Animal {
                 System.out.println("Не корректный ввод данных. Введите число больше 0");
             }
         else System.out.println(name + " прыгнул на " + i + "м");
-            return i;
     }
 }

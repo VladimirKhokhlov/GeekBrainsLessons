@@ -8,11 +8,11 @@ public abstract class Animal {
         this.name = name;
     }
 
-    public abstract int run(int i);
+    public abstract void run(int i);
 
-    public abstract int swim(int i);
+    public abstract void swim(int i);
 
-    public abstract double jump(double i);
+    public abstract void jump(double i);
 
 
 
