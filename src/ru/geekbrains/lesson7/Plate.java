@@ -1,26 +1,28 @@
 package ru.geekbrains.lesson7;
 
 public class Plate {
-    private static int food;
+    private int food;
 
     public Plate(int food) {
-        Plate.food = food;
+        this.food = food;
     }
 
     public void info(){
         System.out.println("Еды в тарелке: " + food);
     }
 
-    public static int getFood() {
+    public int getFood() {
         return food;
     }
 
     public void decreaseFood(int appetite) {
-        if (appetite > food) {
-            System.out.println("В тарелке слишком мало еды!");
-        }
-        if (appetite < food){
+        if (appetite <= food){
             food -= appetite;
         }
+    }
+
+    public void addFood(int putFood) {
+        this.food += putFood;
+        System.out.println("Вы добавили " + putFood + " еды!");
     }
 }
