@@ -23,7 +23,7 @@ public class TestClass {
                                         intArray[row][col] = Integer.parseInt(strings[row][col]);
                                     } catch (NumberFormatException e) {
                                     intArray[row][col] = 0;
-                                    System.out.println("Индекс буквы = " + row + "." + col);
+                                    System.out.println(e.getMessage() + " номер ячейки = " + row + "." + col);
                                     }
                                 }
                             }
