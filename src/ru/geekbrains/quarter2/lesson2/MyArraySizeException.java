@@ -1,7 +1,7 @@
 package ru.geekbrains.quarter2.lesson2;
 
-public class MyArraySizeException extends Exception {
-    public MyArraySizeException(String massage) {
-        super(massage);
+public class MyArraySizeException extends NullPointerException {
+    public MyArraySizeException() {
+        throw new NullPointerException();
     }
 }
