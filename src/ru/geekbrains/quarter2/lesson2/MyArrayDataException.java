@@ -1,8 +1,7 @@
 package ru.geekbrains.quarter2.lesson2;
 
-public class MyArrayDataException extends NumberFormatException{
-    public MyArrayDataException(String s) {
-        super(s);
+public class MyArrayDataException extends Exception{
+    public MyArrayDataException(String message) {
+        super(message);
     }
-
 }

@@ -1,39 +1,43 @@
 package ru.geekbrains.quarter2.lesson2;
 
 public class TestClass {
+
+    static int sum = 0;
+
     public static void main(String[] args) {
-        String[][] stringArray = {{"w","3","2", "3"}, {"8","6","3","i"},{"3","6","8","9"},{"1","3","3","7"}};
-        try {
-            changeStringToIntAndSum(stringArray);
-        }catch (NullPointerException e) {
-            System.out.println("Вы ввели массив не верного размера. Размер массива должен быть 4*4");
+        String[][] stringArray = {{"1", "1", "a", "1"}, {"1", "1", "1", "i"}, {"1", "1", "b", "1"}, {"1", "c", "1", "1"}};
+        getSum(stringArray);
+        System.out.println(sum);
+    }
+
+    private static void getSum(String[][] stringArray) {
+        for (int i = 0; i < stringArray.length; i++) {
+            for (int j = 0; j < stringArray[i].length; j++) {
+                try {
+                    foo(stringArray, i, j);
+                } catch (MyArraySizeException e) {
+                    System.out.println(e.getMessage());
+                    return;
+                } catch (MyArrayDataException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
     }
 
-    public static void changeStringToIntAndSum(String[][] strings) {
-        Integer[][] intArray = new Integer[strings.length][strings.length];
-        int sum = 0;
-            for (int i = 0; i < strings.length; i++) {
-                for (int j = 0; j < strings.length; j++) {
-                    if (strings[i].length == 4 && strings[j].length == 4){
-                        try {
-                            for (int row = 0; row < strings.length; row++) {
-                                for (int col = 0; col < strings.length; col++) {
-                                    try {
-                                        intArray[row][col] = Integer.parseInt(strings[row][col]);
-                                    } catch (NumberFormatException e) {
-                                    intArray[row][col] = 0;
-                                    System.out.println(e.getMessage() + " номер ячейки = " + row + "." + col);
-                                    }
-                                }
-                            }
-                        }catch (NullPointerException e){
-                            e.getMessage();
-                        }
-                    }
-                    sum += intArray[i][j];
-                }
+    public static void foo(String[][] arr, int i, int j) throws MyArraySizeException, MyArrayDataException {
+        if (arr.length != 4) {
+            throw new MyArraySizeException("Wrong size");
+        }
+        for (String[] strings : arr) {
+            if (strings.length != 4) {
+                throw new MyArraySizeException("Wrong size");
             }
-            System.out.println(sum);
+        }
+        try {
+            sum += Integer.parseInt(arr[i][j]);
+        } catch (NumberFormatException e) {
+            throw new MyArrayDataException("Wrong symbol in indexes i = " + i + ", j = " + j);
+        }
     }
 }
